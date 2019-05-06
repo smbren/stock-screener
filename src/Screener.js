@@ -9,23 +9,8 @@ class Screener extends Component {
       };   
   }
 
-  componentDidMount() {
-
-    const id = "TSLA";
-
-    axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${id}&apikey=DEMO`)
-      .then(res => {
-        console.log(res.data["Global Quote"]);
-        this.setState(
-          res.data["Global Quote"]
-        )
-      })
-      .catch(err => console.log(err));
-  }
-
-  getStock = (event, ticker) => {
-    event.preventDefault();
-
+  getStock = (e, ticker) => {
+    e.preventDefault();
     axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${process.env.AV_API_KEY}`)
     .then(res => {
       console.log(res.data["Global Quote"]);
@@ -49,7 +34,7 @@ class Screener extends Component {
     return (
       <div>
 
-        <form onSubmit={this.getStock(this.state.ticker)}>
+        <form onSubmit={(e) => this.getStock(e, this.state.ticker)}>
           <input type="search" name="ticker" onChange={this.handleInput}></input>
           <button type="submit">Search</button>
         </form>
