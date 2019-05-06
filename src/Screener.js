@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 class Screener extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +37,10 @@ class Screener extends Component {
     return (
       <div>
 
-        <form onSubmit={(e) => this.getStock(e, this.state.ticker)}>
-          <input type="search" name="ticker" onChange={this.handleInput}></input>
-          <button type="submit">Search</button>
-        </form>
+        <Form onSubmit={(e) => this.getStock(e, this.state.ticker)}>
+          <Form.Control type="search" name="ticker" onChange={this.handleInput} />
+          <Button as="input" type="submit" value="Submit" />
+        </Form>
 
         <p>Symbol: {this.state["01. symbol"]}</p>
         <p>Price: {this.state["05. price"]}</p>
