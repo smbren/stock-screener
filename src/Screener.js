@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import FormControl from 'react-bootstrap/FormControl';
+import Table from 'react-bootstrap/Table';
 
 class Screener extends Component {
   constructor(props) {
@@ -55,9 +56,24 @@ class Screener extends Component {
           
         </Navbar>
 
-        <p>Symbol: {this.state["01. symbol"]}</p>
-        <p>Price: {this.state["05. price"]}</p>
-        <p>Change:</p> <p style={{color: this.state["9. change"] > 0 ? 'green' : 'red'}}>{this.state["10. change percent"]}</p>
+        <Table responsive="xl" striped="true" bordered="true" hover="true" variant="dark">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Last</th>
+              <th>Change</th>
+              <th>Volume</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{this.state["01. symbol"]}</td>
+              <td>{this.state["05. price"]}</td>
+              <td>{this.state["10. change percent"]}</td>
+              <td>{this.state["06. volume"]}</td>
+            </tr>
+          </tbody>
+        </Table>
 
       </div>
     )
